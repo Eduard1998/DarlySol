@@ -1,0 +1,111 @@
+<div class="global-wrapper">
+
+  <mat-card class="header-wrapper">
+    <h1 class="title-header">Register</h1>
+  </mat-card>
+
+  <mat-card class="main-wrapper">
+
+    <form [formGroup]="formName" >
+      <mat-form-field>
+        <input matInput
+          [formGroup]="formName"
+          [(ngModel)]="nameInput"
+          (keyup)="nameHintFn()"
+          formControlName="name"
+          type="name" 
+          name="name"
+          id="name"
+          placeholder="Name">
+          <mat-hint [style.color]="nameColor">{{nameHint}}</mat-hint>
+      </mat-form-field>
+    </form>
+
+    <form [formGroup]="formSirname">
+      <mat-form-field>
+        <input matInput
+          placeholder="Sirname"
+          [(ngModel)]="sirnameInput"
+          (keyup)="sirnameHintFn()"
+          [formGroup]="formSirname"
+          formControlName="sirname"
+          type="sirname" 
+          name="sirname"
+          id="sirname">
+          <mat-hint [style.color]="sirnameColor">{{sirnameHint}}</mat-hint>
+      </mat-form-field>
+    </form>
+
+    <form [formGroup]="formAge">
+      <mat-form-field >
+        <input matInput
+          placeholder="Age"
+          (keyup)="ageHintFn()"
+          type="age" 
+          id="age"
+          name="age"
+          formControlName="age"
+          [formGroup]="formAge"
+          [(ngModel)]="ageInput">
+        <mat-hint [style.color]="ageColor">{{ageHint}}</mat-hint>
+       </mat-form-field>
+    </form>
+
+    <form>
+      <mat-form-field>
+        <input matInput 
+          placeholder="Email" 
+          [formControl]="emailFormControl"
+          [errorStateMatcher]="matcher"
+          [(ngModel)]="emailInput">
+        <mat-hint>Errors appear instantly!</mat-hint>
+        <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+          Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="emailFormControl.hasError('required')">
+          Email is <strong>required</strong>
+        </mat-error>
+        <mat-hint class="email-hint-title" *ngIf="isEmailValidator">{{emailHint}}</mat-hint>
+      </mat-form-field>
+    </form>
+
+    <div class="password-card-wrapper">
+        <form [formGroup]="form"> 
+            <mat-form-field>
+              <input matInput
+                [(ngModel)]="passwordInput"
+                placeholder="Password" 
+                type="password" 
+                id="password"
+                formControlName="password"
+                [formGroup]="form"
+                (keyup)="passwordHintFn()">
+                <mat-hint [style.color]="color">{{passwordHint}}</mat-hint>
+            </mat-form-field>
+          </form> 
+    </div>
+    
+    <div [style.margin-top]="marginTopPassword()">
+        <form [formGroup]="form">
+            <mat-form-field>
+              <input matInput
+                [(ngModel)]="confirmPasswordInput"
+                placeholder="Confirm password" 
+                type="password" 
+                id="confirmPassword"
+                formControlName="confirmPassword"
+                [formGroup]="form"
+                (keyup)="passwordCompatibility()">
+                <mat-hint [style.color]="colorConfirm">{{confirmPasswordHint}}</mat-hint>
+            </mat-form-field>
+          </form>
+    </div>
+    
+    <mat-card-subtitle *ngIf="isValidator" class="hint-title">All fields must be filled</mat-card-subtitle>
+    <mat-card-subtitle *ngIf="isUserExist" class="hint-title">Your email is already in use.</mat-card-subtitle>
+    <button mat-raised-button class="button" (click)="signUp()"color="primary">Sign up</button>
+    <button mat-raised-button class="button" (click)="signIn()"color="primary">Sign in</button>
+
+  </mat-card>
+
+</div>

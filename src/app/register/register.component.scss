@@ -1,0 +1,37 @@
+.global-wrapper {
+    background-color: #858282;
+    height: 100%;
+    width: 100%;
+
+    .header-wrapper {
+        margin: auto;
+        margin-top: 0px;
+        text-align: center;
+        background-color: #e3e0e0;
+        color: blue;
+        .title-header {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+    }
+
+    .main-wrapper {
+        margin: auto;
+        margin-top: 25px;
+        width: 220px;
+        background-color: #e3e0e0;
+        .email-hint-title {
+            color: #f44336;
+        }
+        .password-card-wrapper {
+            margin-top: 6px; 
+        }
+        .hint-title {
+            margin-top: 1vw;
+            margin-bottom: 0;
+            color: #f44336;
+        }
+        .button {
+            margin-top: 10px;
+        }
+    }
+}

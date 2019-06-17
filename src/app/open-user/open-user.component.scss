@@ -1,0 +1,28 @@
+.global-wrapper {
+    height: 77vw;
+    align-items: center;
+    background-color: #c9c9c9;
+    display: grid;    
+    .main-wrapper {
+        display: grid;
+        background-color: #dbdbdb;
+        .info-user-wrapper {
+            padding: 1vw;
+            display: grid;
+            .title-user {
+                padding: 1vw;
+                border-bottom: 1px solid;   
+                display: flex;
+                justify-content: center;
+            }
+        }
+        .button-wrapper {
+            display: flex;
+            justify-content: center;
+            .button {
+                width: 12vw;
+                background-color: #bab8b8;      
+            }
+        }
+    }
+}

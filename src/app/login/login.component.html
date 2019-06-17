@@ -1,0 +1,43 @@
+<div class="global-wrapper">
+
+  <mat-card class="header-wrapper">
+    <h1 class="title-header">Task</h1>
+  </mat-card>
+
+  <mat-card class="main-wrapper">
+    <form class="example-form">
+      <mat-form-field class="example-full-width">
+        <input matInput 
+          placeholder="Email" 
+          [formControl]="emailFormControl"
+          [errorStateMatcher]="matcher"
+          [(ngModel)]="emailInput">
+        <mat-hint>Errors appear instantly!</mat-hint>
+        <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+          Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="emailFormControl.hasError('required')">
+          Email is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </form>
+    <form [formGroup]="form" [ngStyle]="{'margin-bottom' : '2vw'}" (ngSubmit)="onSubmit()">
+      <mat-form-field class="example-full-width">
+        <input matInput
+          [(ngModel)]="passwordInput"
+          placeholder="Password"
+          type="password" 
+          id="password"
+          name="login"
+          formControlName="password" 
+          [formGroup]="form"
+          (keyup)="passwordHintFn()">
+        <mat-hint class="password-validator" [style.color]="color" >{{passwordHint}}</mat-hint>
+      </mat-form-field>
+    </form>
+      <mat-hint [style.color]="singInColor">{{singInHint}}</mat-hint>
+    <button mat-raised-button class="button" (click)="signIn()" color="primary">Sign in</button>
+    <button mat-raised-button class="button" (click)="signUp()" color="primary">Sign up</button>
+  </mat-card>
+
+</div>
